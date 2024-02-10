@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Home.css'
 import { useNavigate } from 'react-router-dom'
 import { features, footerLinks } from '../../Helper/Data';
@@ -8,6 +8,14 @@ import { FaAngleRight } from 'react-icons/fa'
 const Home = () => {
     // states
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        document.addEventListener('scroll',()=>{
+            const header = document.querySelector('header');
+            if(window.scrollY>20)header?.classList.add('fixed')
+            if(window.scrollY<20)header?.classList.remove('fixed')
+        })
+    },[])
 
 
   return (
@@ -20,9 +28,9 @@ const Home = () => {
             <nav>
                 <a href="#hero">Home</a>
                 <a href="#features">Features</a>
-                <a href="#Start">Start Project</a>
+                <a href="#Start">Join</a>
             </nav>
-            <button onClick={()=>navigate('/Login')}>Login In</button>
+            <button onClick={()=>navigate('/Login')}>Login</button>
         </header>
         <section id="hero">
             <div className="top">
@@ -56,7 +64,7 @@ const Home = () => {
             <h3>Ready to Start your projects? Get Started Today!</h3>
             <button>
                 <h3>Get Started</h3>
-                <AiOutlineArrowRight/>
+                <AiOutlineArrowRight className='icon'/>
             </button>
         </div>
         <footer>
@@ -77,8 +85,8 @@ const Home = () => {
                 <div className="right">
                     {
                         footerLinks.map(({name,links},i)=>(
-                            <div className="content">
-                                <h3 key={i}>{name}</h3>
+                            <div key={i} className="content">
+                                <h3>{name}</h3>
                                 <div className="links">
                                     {
                                         links.map(({name,link},j)=>(

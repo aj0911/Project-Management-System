@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 
 *{
@@ -8,14 +8,17 @@
   list-style-type: none;
   text-decoration: none;
   user-select: none;
-  font-family: Poppins;
+  font-family: 'Advent Pro';
 }
 
 :root{
   --bgColor:#fff;
   --textColor:#000;
+  --bgColorLightPlus:#F8F8F8;
   --bgColorLight:#DFDFDF;
   --secColor:#6457F9;
+  --secColor2:#A54ECF;
+  --transition:all .4s;
 }
 
 html{
@@ -36,3 +39,13 @@ html{
   
 }
 /* End Responsive */
+
+/* Animations */
+@keyframes borderAnimation{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}
