@@ -13,9 +13,13 @@
 
 :root{
   --bgColor:#fff;
+  /* --bgColor:#1A1C2D; */
   --textColor:#000;
+  /* --textColor:#fff; */
   --bgColorLightPlus:#F8F8F8;
+  /* --bgColorLightPlus:#181B31; */
   --bgColorLight:#DFDFDF;
+  /* --bgColorLight:#13131D; */
   --secColor:#6457F9;
   --secColor2:#A54ECF;
   --transition:all .4s;
@@ -27,6 +31,47 @@ html{
 
 ::-webkit-scrollbar{
   display: none;
+}
+
+
+/* light and dark mode btn */
+.dayNightMode{
+  width: 80px;
+  height: 35px;
+  /* padding: 10px; */
+  box-shadow: inset -1px 1px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: var(--bgColor);
+  cursor: pointer;
+  .dayNightbox{
+    position: absolute;
+    top: 50%;
+    background-color: var(--bgColorLightPlus);
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: var(--transition);
+    .icon{
+      color: #FF423E;
+    }
+  }
+}
+
+.dayNightMode.night{
+  .dayNightbox{
+    left: calc(100% - 35px);
+    .icon{
+      color: white;
+    }
+  }
 }
 
 /* Responsive */

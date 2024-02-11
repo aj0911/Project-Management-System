@@ -74,3 +74,34 @@ export const footerLinks = [
         ]
     }
 ];
+
+export const colors = {
+    day:[
+        {
+            '--bgColor':'#fff'
+        },
+        {
+            '--textColor':'#000'
+        },
+        {
+            '--bgColorLightPlus':'#F8F8F8'
+        },
+        {
+            '--bgColorLight':'#DFDFDF'
+        },
+    ],
+    night:[
+        {
+            '--bgColor':'#1A1C2D'
+        },
+        {
+            '--textColor':'#fff'
+        },
+        {
+            '--bgColorLightPlus':'#181B31'
+        },
+        {
+            '--bgColorLight':'#13131D'
+        },
+    ]
+}

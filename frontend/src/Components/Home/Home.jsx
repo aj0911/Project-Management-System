@@ -1,15 +1,23 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Home.css'
 import { useNavigate } from 'react-router-dom'
 import { features, footerLinks } from '../../Helper/Data';
-import { AiOutlineArrowRight } from 'react-icons/ai'
-import { FaAngleRight } from 'react-icons/fa'
+import { AiOutlineArrowRight, AiOutlineClose } from 'react-icons/ai'
+import { FaAngleRight, FaMoon, FaSun } from 'react-icons/fa'
 
-const Home = () => {
+const Home = ({toggleDayNight}) => {
     // states
     const navigate = useNavigate();
+    const [isDay,setIsDay] = useState();
+    const home = useRef();
+
 
     useEffect(()=>{
+        if(document.documentElement.style.getPropertyValue('--bgColor')==='#1A1C2D'){
+            setIsDay(false);
+            document.querySelector('.dayNightMode').classList.add('night');
+        }
+        else setIsDay(true);
         document.addEventListener('scroll',()=>{
             const header = document.querySelector('header');
             if(window.scrollY>20)header?.classList.add('fixed')
@@ -19,18 +27,30 @@ const Home = () => {
 
 
   return (
-    <div id="Home">
+    <div ref={home} id="Home">
         <header>
             <div className="logo">
                 <img src={require('../../Assets/Images/logo.png')} alt="" />
                 <h1>DTU IRD</h1>
             </div>
             <nav>
-                <a href="#hero">Home</a>
-                <a href="#features">Features</a>
-                <a href="#Start">Join</a>
+                <a onClick={()=>home.current.classList.remove('active')} href="#hero">Home</a>
+                <a onClick={()=>home.current.classList.remove('active')} href="#features" >Features</a>
+                <a onClick={()=>home.current.classList.remove('active')} href="#Start">Join</a>
+                <div onClick={()=>{setIsDay(!isDay);toggleDayNight();}} className="dayNightMode">
+                    <div className="dayNightbox">
+                        {
+                            (isDay)?
+                            <FaSun className='icon'/>:
+                            <FaMoon className='icon'/>
+                        }
+                    </div>
+                </div>
+                <button onClick={()=>navigate('/Login')}>Login</button>
+                <AiOutlineClose  onClick={()=>home.current.classList.remove('active')} className='icon'/>
             </nav>
             <button onClick={()=>navigate('/Login')}>Login</button>
+            <div onClick={()=>home.current.classList.add('active')} className="menu"></div>
         </header>
         <section id="hero">
             <div className="top">
