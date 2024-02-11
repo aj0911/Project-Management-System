@@ -105,3 +105,9 @@ export const colors = {
         },
     ]
 }
+
+export const roles = {
+    ADMIN:'Admin',
+    PRODUCT_MANAGER:'Product Manager',
+    PROFESSOR:'Professor'
+}

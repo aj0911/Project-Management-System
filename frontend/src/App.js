@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './index.css';
 import Login from './Components/Auth/Login';
 import Home from './Components/Home/Home';
+import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import { useEffect, useRef } from 'react';
 import { colors } from './Helper/Data';
 
@@ -30,6 +31,7 @@ function App() {
     <>
       <Routes>
         <Route path='/Login' element={<Login />}/>
+        <Route path='/Admin' element={<Dashboard />}/>
         <Route path='/'  element={<Home toggleDayNight={toggleDayNight}/>}/>
       </Routes>
     </>
