@@ -1,3 +1,6 @@
+import { AiOutlineBell, AiOutlineHome, AiOutlineMan, AiOutlineProject, AiOutlineSetting, AiOutlineTeam } from 'react-icons/ai'
+import { MdOutlineToggleOff, MdRecommend, MdTaskAlt } from "react-icons/md";
+
 export const features = [
     {
         name:'Task Management',
@@ -111,3 +114,62 @@ export const roles = {
     PRODUCT_MANAGER:'Product Manager',
     PROFESSOR:'Professor'
 }
+
+export const frames = {
+    LOGIN:true,
+    REGISTER:false
+}
+
+export const DashboardOptions = [
+    {
+        name:null,
+        menus:[
+            {
+                name:'Home',
+                icon:<AiOutlineHome/>
+            },
+            {
+                name:'My Tasks',
+                icon:<MdTaskAlt/>
+            },
+            {
+                name:'Managers',
+                icon:<AiOutlineMan/>
+            },
+            {
+                name:'Team',
+                icon:<AiOutlineTeam/>
+            },
+            {
+                name:'Projects',
+                icon:<AiOutlineProject/>
+            },
+        ]
+    },
+    {
+        name:'Reporting',
+        menus:[
+            {
+                name:'Inbox',
+                icon:<AiOutlineBell/>
+            },
+            {
+                name:'Recommendations',
+                icon:<MdRecommend/>
+            }
+        ]
+    },
+    {
+        name:'Others',
+        menus:[
+            {
+                name:'Settings',
+                icon:<AiOutlineSetting/>
+            },
+            {
+                name:'Account',
+                icon:<MdOutlineToggleOff/>
+            }
+        ]
+    },
+]

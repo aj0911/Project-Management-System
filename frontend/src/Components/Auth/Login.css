@@ -5,6 +5,7 @@
     background-color: var(--bgColorLight);
     min-height: 100vh;
     .login{
+        transition: var(--transition);
         position: absolute;
         top: 5%;
         left: 5%;
@@ -18,9 +19,11 @@
         border-radius: 10px;
         overflow: hidden;
         .left{
+            overflow: scroll;
             position: absolute;
             top: 0;
             left: 0;
+            transition: var(--transition);
             height: 100%;
             width: 50%;
             padding: 20px 5%;
@@ -142,6 +145,7 @@
             }
         }
         .right{
+            transition: var(--transition);
             position: absolute;
             top: 0;
             left: 50%;
@@ -155,6 +159,17 @@
             }
         }
     }
+    .login.register{
+        .left{
+            left: 50%;
+        }
+        .right{
+            left: 0;
+            img{
+                border-radius: 10px 0 0 10px;
+            }
+        }
+    }
 }
 
 /* Responsive */
@@ -162,35 +177,148 @@
 @media screen and (max-width:999px) {
   .auth{
     .login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:url('../../Assets/Images/login.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transform: rotateY(180deg);
+        transition: transform 1s;
         .left{
-            top: 0;
-            left: 0;
+            transition: transform 1s;
+            overflow: scroll;
+            position: relative;
+            transform: rotateY(180deg);
             width: 100%;
-            height: 60%;
-            z-index: 20;
+            >p{
+                color: #fff;
+            }
+            form{
+                .formControl{
+                    h3{
+                        color: #fff;
+                    }
+                    .input{
+                        input,select{
+                            color: #fff;
+                        }
+                    }
+                }
+                p{
+                    color: #fff;
+                }
+            }
         }
         .right{
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            position: relative;
+            display: none;
         }
-        .right::after{
-            position: absolute;
-            top: 0;
+    }
+    .login::before{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1A1C2D;
+        opacity: .8;
+        content: '';
+        z-index: -1;
+        border-radius: 10px;
+    }
+    .login.register{
+        transform: rotatey(0deg);
+        .left{
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bgColor);
-            opacity: .7;
-            content: '';
+            transform: rotateY(0deg);
         }
     }
   }
 }
 
 @media screen and (max-width:599px) {
-  
+    .auth
+    .login
+    .left
+    img {
+        width: 50px;
+        margin: .5rem 0;
+    }
+    .auth
+    .login
+    .left
+    >h3 {
+        font-size: 1.8rem;
+    }
+    .auth
+    .login
+    .left
+    >p {
+        font-size: .8rem;
+    }
+    .auth
+    .login
+    .left
+    form
+    .formControl
+    h3 {
+        font-size: .8rem;
+    }
+    .auth
+    .login
+    .left
+    form
+    .formControl
+    .input {
+        border-radius: 3px;
+        padding: 5px;
+    }
+
+    .auth
+    .login
+    .left
+    form
+    .formControl
+    .input
+    input{
+        font-size: .9rem;
+    }
+    .auth
+    .login
+    .left
+    form
+    .formControl
+    .input
+    select{
+        font-size: .9rem;
+        option{
+            font-size: .9rem;
+        }
+    }
+    .auth
+    .login
+    .left
+    form
+    .forgot {
+        font-size: .8rem;
+    }
+    .auth
+    .login
+    .left
+    form
+    input[type="submit"] {
+        border-radius: 3px;
+        padding: 5px 10px;
+        font-size: .9rem;
+    }
+    .auth
+    .login
+    .left
+    form
+    p {
+        font-size: .8rem;
+    }
 }
 /* End Responsive */
