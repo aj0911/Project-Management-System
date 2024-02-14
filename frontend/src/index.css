@@ -95,3 +95,29 @@ html{
     width: 100%;
   }
 }
+
+@keyframes loadAnimate{
+  0%{
+    transform: translateY(-10px);
+    filter: blur(33px);
+    opacity: 0;
+  }
+  100%{
+    filter: blur(0px);
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
+
+@keyframes loadAnimateRev{
+  0%{
+    transform: translateY(10px);
+    filter: blur(33px);
+    opacity: 0;
+  }
+  100%{
+    filter: blur(0px);
+    transform: translateY(0px);
+    opacity: 100%;
+  }
+}
