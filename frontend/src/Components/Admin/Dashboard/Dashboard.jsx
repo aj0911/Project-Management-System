@@ -1,12 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Dashboard.css'
-import { DashboardOptions } from '../../../Helper/Data'
+import { DashboardIndex, DashboardIndexSearch, DashboardMenus, DashboardOptions } from '../../../Helper/Data'
 import { AiFillStar, AiOutlineSearch } from 'react-icons/ai'
 import { MdAdd } from 'react-icons/md'
+import PatentFilling from '../IPR/PatentFilling'
 
 const Dashboard = () => {
   // States
   const [fullView,setFullView] = useState(true);
+  const [navPointer,setNavPointer] = useState(0);
+  const [data,setData] = useState(null);
+
+  // Functions
+  const handleSearchChange = (value)=>{
+    if(value==='')setData(DashboardOptions)
+    else{
+      const menus = DashboardIndexSearch(value)
+      setData([{
+        name:'Search',
+        menus
+      }])
+    }
+  }
+
+  // Rendering
+  useEffect(()=>{
+    setData(DashboardOptions)
+  },[])
 
   return (
     <div id="Dashboard">
@@ -22,7 +42,7 @@ const Dashboard = () => {
         </div>
         <nav>
           {
-            DashboardOptions.map((option,i)=>(
+            data?.map((option,i)=>(
               <div className="set" key={i}>
                 {
                   option.name?
@@ -30,7 +50,9 @@ const Dashboard = () => {
                 }
                 {
                   option.menus.map((menu,j)=>(
-                    <div className={`tag ${j===0 && i===0?'active':''}`}>
+                    <div onClick={()=>{setNavPointer(DashboardIndex(menu.name));
+                      if(window.innerWidth<1000)setFullView(true);
+                    }} key={j} className={`tag ${DashboardMenus[navPointer]?.name===menu.name?'active':''}`}>
                       <div className="icon">{menu.icon}</div>
                       <h3>{menu.name}</h3>
                     </div>
@@ -61,14 +83,21 @@ const Dashboard = () => {
           <div className="right">
             <div className="input">
               <AiOutlineSearch className='icon'/>
-              <input type="text" placeholder='Search' />
+              <input onChange={event=>handleSearchChange(event.target.value)} type="text" placeholder='Search' />
             </div>
             <MdAdd className='add'/>
             <img src={require('../../../Assets/Images/logo.png')} />
           </div>
         </div>
         <div className="wrapper">
-          
+          {
+            (()=>{
+              switch(navPointer){
+                case DashboardIndex('Patent Filling'):
+                  return <PatentFilling/>
+              }
+            })()
+          }
         </div>
       </div>
     </div>

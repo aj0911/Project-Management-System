@@ -1,5 +1,5 @@
 import { AiOutlineBell, AiOutlineHome, AiOutlineMan, AiOutlineProject, AiOutlineSetting, AiOutlineTeam } from 'react-icons/ai'
-import { MdOutlineToggleOff, MdRecommend, MdTaskAlt } from "react-icons/md";
+import { MdOutlineInventory, MdOutlineToggleOff, MdRecommend, MdTaskAlt } from "react-icons/md";
 
 export const features = [
     {
@@ -111,7 +111,7 @@ export const colors = {
 
 export const roles = {
     ADMIN:'Admin',
-    PRODUCT_MANAGER:'Product Manager',
+    COORDINATOR:'Coordinator',
     PROFESSOR:'Professor'
 }
 
@@ -147,6 +147,15 @@ export const DashboardOptions = [
         ]
     },
     {
+        name:'DTU-IPR',
+        menus:[
+            {
+                name:'Patent Filling',
+                icon:<MdOutlineInventory/>
+            },
+        ]
+    },
+    {
         name:'Reporting',
         menus:[
             {
@@ -173,3 +182,21 @@ export const DashboardOptions = [
         ]
     },
 ]
+
+export const DashboardMenus = [];
+DashboardOptions.forEach(x=>x.menus.forEach(y=>DashboardMenus.push(y)));
+
+export const DashboardIndex = (name)=>{
+    let index = undefined;
+    DashboardMenus.forEach((x,i)=>{
+        if(x.name===name)index = i;
+    })
+    return index;
+}
+export const DashboardIndexSearch = (keyword)=>{
+    const arr = [];
+    DashboardMenus.forEach(x=>{
+        if(x.name.toLowerCase().includes(keyword))arr.push(x)
+    })
+    return arr;
+}
